@@ -7,7 +7,7 @@ var express = require('express'),
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:3000/Devdb'); 
+mongoose.connect('mongodb://localhost/Devdb'); 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 var routes = require('./api/routes/DevRoutes'); //importing route
 routes(app); //register the route
 
+app.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' not found'})
+});
 
 app.listen(port);
 

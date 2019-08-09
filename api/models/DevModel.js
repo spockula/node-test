@@ -8,13 +8,12 @@ var DevSchema = new Schema({
     type: String,
     required: 'Enter Full Name'
   },
-  Phone:{
+  phone:{
       type: Number,
-      required: 'Enter Phone Number'
+      required: 'phone number'
   },
-  Address:{
+  address:{
       type: String,
-      required: 'Enter address'
   },
   Created_date: {
     type: Date,

@@ -13,11 +13,13 @@ exports.list_all_devs = function(req, res) {
 };
 
 
-
-
 exports.create_a_dev = function(req, res) {
-  var new_dev = new Task(req.body);
-  new_dev.save(function(err, dev) {
+  var new_dev = new Dev(req.body);{
+    name:req.body.name;
+    phone: req.body.phone;
+    address: req.body.address;
+  }
+  new_dev.save((err, dev) => {
     if (err)
       res.send(err);
     res.json(dev);
@@ -44,10 +46,8 @@ exports.update_a_dev = function(req, res) {
 
 
 exports.delete_a_dev = function(req, res) {
-
-
   Dev.remove({
-    _id: req.params.taskId
+    _id: req.params.DevId
   }, function(err, dev) {
     if (err)
       res.send(err);
