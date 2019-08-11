@@ -5,27 +5,31 @@ var Schema = mongoose.Schema;
 
 var DevSchema = new Schema({
   name: {
-    type: String,
-    required: 'Enter Full Name'
+  type: [{
+  type:  String,
+  required: 'enter full name'
+  }]
+}, 
+  address:  {
+    type: [{
+    type:  String,
+    required: 'enter address'
+    }]
   },
-  phone:{
-      type: Number,
-      required: 'phone number'
+  phone:  {
+    type: [{
+    type:  Number,
+    required: 'enter number'
+    }]
   },
-  address:{
-      type: String,
-  },
-  Created_date: {
-    type: Date,
-    default: Date.now
-  },
-  Stack: {
+  
+  status: {
     type: [{
       type: String,
       enum: ['FrontEnd', 'BackEnd', 'FullStack']
     }],
     default: ['FullStack']
-  }
+  } 
 });
 
 module.exports = mongoose.model('Devs', DevSchema);
